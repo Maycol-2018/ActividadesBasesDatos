@@ -63,3 +63,17 @@ VALUES (1, 'M-2000-OK', 'Ford', 'Fiesta', 2000, 'Verde', 'Gasolina', 4, 30.00);
 SELECT * FROM Vehiculos WHERE marca = 'Ford';
 
 
+-- Prueba de Restricción DEFAULT (estado del vehículo)  -------------------------------------------------------------------
+
+-- Inserción SIN especificar el estado (debería asignar 'Disponible' por DEFAULT)
+INSERT INTO Vehiculos (sucursal_id, matricula, marca, modelo, año, color, tipo_combustible, capacidad, precio_dia)
+VALUES (1, 'M-2024-DEF', 'Kia', 'Sportage', 2024, 'Blanco', 'Gasolina', 5, 60.00);
+
+-- Verificación
+SELECT matricula, estado FROM Vehiculos WHERE matricula = 'M-2024-DEF';
+
+
+-- Prueba de Restricción NOT NULL (nombre del vehículo)  -------------------------------------------------------------------
+-- Intentar insertar sin nombre (viola NOT NULL)
+INSERT INTO Clientes (dni, apellido, telefono) 
+VALUES ('66666666F', 'García', '677777777');
